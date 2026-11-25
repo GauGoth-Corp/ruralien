@@ -1,11 +1,13 @@
 <img src="src/assets/hero.png" alt="RuraLien logo" width="64" height="64" />
 
+[Readme](README.md) | [Setup](SETUP.md) | [License](LICENSE.md)
+
 ---
 
-# RuraLien — Guide de Setup & Workflow (Vue 3 + Capacitor)
+# Application RuraLien — Guide de Setup & Workflow (Vue 3 + Capacitor)
 
-Module de communication pour les habitants des zones rurales, développé par **Galaxaris**.
-Couplé au boîtier LoRa (ESP32), il permet de créer un réseau local maillé pour communiquer sur de longues distances sans dépendre d'Internet (zones blanches, montagne, festivals, camps scouts, situations d'urgence).
+Application de communication hors-réseau pour les zones rurales, développé par **Galaxaris**.
+Couplé au Module RuraLien, utilisant un boîtier LoRa (ESP32), il permet de créer un réseau local maillé pour communiquer sans dépendre d'Internet (zones blanches, montagne, festivals, camps scouts, situations d'urgence).
 
 > **Architecture retenue :** Un **code unique** en **Vue 3 + TypeScript + Vite**, encapsulé dans **Capacitor** pour Android (cible principale) et iOS, déployable tel quel sur le **Web** et empaquetable en logiciel Desktop via **Electron**.
 
@@ -439,4 +441,4 @@ Pour transformer votre dossier `dist/` en véritable logiciel `.exe` / `.AppImag
 
 ---
 
-*Copyright (c) 2024-2026 Galaxaris. All rights reserved.*
+*Copyright (c) 2025-2026 Galaxaris. Tous droits réservés.*
