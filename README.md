@@ -1,76 +1,66 @@
 <img src="src/assets/hero.png" alt="RuraLien logo" width="64" height="64" />
 
----
-
 # RuraLien
 
-Module de communication pour les habitants des zones rurales, développé par Galaxaris.
-Couplé au module Lora, il permet de créer un réseau local pour communiquer entre habitants, sans dépendre d'internet.
-Utile pour les zones rurales, les festivals, les camps scouts, ou encore les situations d'urgence.
+Module de communication hors-réseau pour les zones rurales, développé par **Galaxaris**.
+Couplé au boîtier LoRa (ESP32), il permet de créer un réseau local maillé pour communiquer sans dépendre d'Internet (zones blanches, montagne, festivals, camps scouts, situations d'urgence).
 
-## Setup de l'environnement sur Windows
+> Ce projet utilise **Vue 3 + TypeScript + Vite + Tailwind CSS v4** pour l'interface, et **Capacitor** pour le déploiement sur Android (et iOS/Web/Desktop).
+>
+> 📖 Pour la documentation technique complète (setup Windows détaillé, permissions Android, Deep Links, build Play Store, déploiement Web, iOS, Electron), consultez **[SETUP.md](./SETUP.md)**.
 
-* Installer Node.JS (installe aussi npm, qui est inclus dedans) - v26 LTS
-* Android Studio : version récente
-    * **Settings > Languages & Frameworks > Android SDK** et vérifier qu'un SDK récent est coché (ex: Android API 36 pour Capacitor 8)
-    * Un câble USB : pour le debugging direct sur tel Android (activer le debugging USB dans les options de développeurs du tel : Paramètres > About Phone > Sofware Information > tap x5 on "Build Number"\*\* ; Retour à Paramètres, puis Developer options > USB debugging\*\*
-* **Extensions VS Code utiles :**
-    * ESLint & Prettier (qualité et formatage du code).
-    * Tailwind CSS IntelliSense (si vous utilisez Tailwind pour le style, ce que je vous conseille vivement).
-    * Vue - Official (si vous choisissez Vue).
-* **Extension Firefox utile :** *[Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)*
-* Créer un projet ***Vite*** (serveur local et builder pour la prod) :
-* On utilise TypeScript (JS augmenté, avec la contrainte des "typages" => c'est trop cool !
-* On utilise Vue (voir conv avec Gemini, c'est tellement mieux que React, car bordélique)
-* Mais en réalité on peut choisir n'importe quoi qui nous correspond, la commande `npm run build` compilant tout en natif HTML/CSS/JS lisible par le navigateur (pareil avec `npx cap add android` pour Android)
+---
+
+## Démarrage rapide (après `git clone`)
+
+Le projet Vue, Tailwind et le dossier natif `android/` sont déjà configurés dans ce dépôt. Vous n'avez pas à réinitialiser Vite ni Capacitor.
+
+### Prérequis
+* **Node.js v26 LTS** *(minimum v22)*
+* **VS Code** avec les extensions `Vue - Official` et `Tailwind CSS IntelliSense`
+* *(Uniquement pour tester/compiler sur téléphone)* **Android Studio** (avec un SDK récent, ex: API 36, et **Gradle JDK 21** — voir section 4 de `SETUP.md`).
+
+### 1. Installer les dépendances
+*(Le dossier `node_modules/` n'est pas sur Git, il faut le régénérer après le clone)* :
 
 ```shell
-# 1. Créer l'app web (Vite vous demandera de choisir React ou **Vue**, et JS ou **TypeScript**)
-npm create vite@latest mon-projet
-
-# 2. Entrer dans le dossier et installer les dépendances
-cd mon-projet
+git clone <URL_DU_REPO>
+cd ruralien
 npm install
-
-# 3. Installer Capacitor et la plateforme Android
-npm install @capacitor/core @capacitor/android
-npm install -D @capacitor/cli
-
-# 4. Initialiser Capacitor
-# (Quand il demande "web asset directory", indiquez "dist", c'est le dossier de build de Vite)
-npx cap init
-
-# Désactiver la telemetry
-npx cap telemetry off
-
-# 5. Compiler le web et générer le projet natif Android
-npm run build
-npx cap add android
 ```
 
-***
-
-<br>
-
-* **Lancer le serveur de dev :**
+### 2. Lancer le serveur de développement (Web / Navigateur)
+Idéal pour développer et tester l'interface rapidement (`http://localhost:5173`) :
 
 ```shell
 npm run dev
 ```
 
-***
-
-<br>
-
-* **Tester sur Android & publier :**
+### 3. Tester sur Android (Téléphone USB ou Émulateur)
+*(Le dossier `dist/` n'étant pas versionné sur Git, il faut compiler au moins une fois avant de synchroniser Android)* :
 
 ```shell
-npm run build          # Compile le site web dans le dossier /distnpx cap sync android   # Copie /dist et les plugins dans le dossier /android
-npx cap open android   # Ouvre Android Studio pour lancer sur téléphone ou générer l'AAB
+npm run build          # Compile le projet Vue dans dist/
+npx cap sync android   # Copie dist/ et les plugins natifs dans android/
+npx cap open android   # Ouvre Android Studio
 ```
+*(Raccourci équivalent déjà configuré dans `package.json` : `npm run android:open`)*.
 
-*(Astuce : vous pouvez même activer le Live Reload de Capacitor pour voir vos modifications VS Code en direct sur votre téléphone branché en USB).*
+Dans **Android Studio**, attendez la fin de la synchronisation Gradle en bas à droite, puis cliquez sur **▶ Run 'app'**.
 
---- 
+> **Astuce Debug :** Avec le téléphone branché en USB (débogage USB activé), ouvrez `chrome://inspect/#devices` dans Google Chrome sur votre PC pour accéder à la console JS et à l'inspecteur en direct sur l'app Android.
 
-*Copyright (c) 2024 Galaxaris. All rights reserved.*
+---
+
+## Scripts disponibles (`package.json`)
+
+| Commande | Action |
+| :--- | :--- |
+| `npm run dev` | Lance le serveur local Vite avec rechargement instantané |
+| `npm run build` | Compile l'application web de production dans `dist/` |
+| `npm run android:sync` | Compile (`build`) et copie les fichiers dans `android/` |
+| `npm run android:open` | Compile, synchronise et ouvre Android Studio |
+
+---
+
+*Copyright (c) 2024-2026 Galaxaris. All rights reserved.*
