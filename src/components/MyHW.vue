@@ -22,7 +22,7 @@ const count = ref(0)
   </section>
 
   <section id="network">
-    <img :src="networkGif" class="network-gif" width="300" height="300" alt="" />
+    <img :src="networkGif" class="network-gif" width="300" height="300" alt="" @click="count+=10" />
   </section>
 
   
@@ -46,6 +46,7 @@ const count = ref(0)
     margin: 0 auto;
     background: linear-gradient(#18919F5a, #9198e590);  
     border-radius: 75px;
+    cursor: pointer;
   }
 
   .beta {

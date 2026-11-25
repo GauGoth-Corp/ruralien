@@ -28,3 +28,6 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/galaxaris/ruralien:latest
+
+      - name: Déclencher la mise à jour sur Portainer
+        run: curl -X POST "${{ secrets.PORTAINER_WEBHOOK_URL }}"    
