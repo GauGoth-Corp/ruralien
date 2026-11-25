@@ -1,12 +1,7 @@
 services:
   ruralien-web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/galaxaris/ruralien:latest
     container_name: ruralien-web
     restart: unless-stopped
     ports:
-      # Mappe le port 3081 d'Osiris vers le port 80 du conteneur Nginx
       - "3081:80"
-      # Note : si Osiris possède plusieurs IP et que vous voulez restreindre à 10.0.1.7 :
-      # - "10.0.1.7:3081:80"
