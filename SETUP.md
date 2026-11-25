@@ -359,6 +359,13 @@ Permet d'ouvrir directement l'app sur la bonne page quand on clique sur un lien 
      RewriteCond %{REQUEST_FILENAME} !-d
      RewriteRule ^ index.html [L]
    </IfModule>
+
+   #Forbidding access to .ht* file
+   <Files .ht*>
+     Order allow,deny
+     Deny from all
+     Satisfy all 
+   </Files>
    ```
    *(Les vrais fichiers/dossiers comme un éventuel dossier `/api` en PHP ou `/.well-known/assetlinks.json` continuent d'être servis normalement).*
 2. **Compilez le site :**
