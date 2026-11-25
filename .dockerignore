@@ -1,0 +1,8 @@
+node_modules
+dist
+android
+.git
+*.apk
+*.aab
+*.jks
+*.keystore
