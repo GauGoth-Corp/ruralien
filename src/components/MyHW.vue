@@ -14,7 +14,7 @@ const count = ref(0)
     </div>
     <div>
       <h1>RuraLien</h1>
-      <p>Welcome to the RuraLien app</p>
+      <p>Welcome to the RuraLien app <span class="beta">- v0.1-Beta</span></p>
     </div>
     <button type="button" class="counter" @click="count++">
       Count is {{ count }}
@@ -46,6 +46,12 @@ const count = ref(0)
     margin: 0 auto;
     background: linear-gradient(#18919F5a, #9198e590);  
     border-radius: 75px;
+  }
+
+  .beta {
+    font-size: 0.8rem;
+    color: #c9c9c9;
+    font-style: italic;
   }
 
   .footer {
