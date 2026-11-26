@@ -1,10 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import heroImg from '../assets/hero.png'
+// LocalStorage
+import { useLocalStorage } from '@vueuse/core'
+// Camera
+import heroImg from '../assets/hero.svg'
 import galaxarisLogo from '../assets/logo-galaxaris-square.png'
-import networkGif from '../assets/11-07-18-774_512.gif'
+import networkGif from '../assets/network-connection.gif'
 
 const count = ref(0)
+// If in localStorage, get the value, else set it to 0
+const storedCount = useLocalStorage('count', 0)
+count.value = storedCount.value
+
+function incrementCount(n=1) {
+  count.value += n
+  storedCount.value = count.value
+}
 </script>
 
 <template>
@@ -16,13 +27,13 @@ const count = ref(0)
       <h1>RuraLien</h1>
       <p>Welcome to the RuraLien app <span class="beta">- v0.1-Beta</span></p>
     </div>
-    <button type="button" class="counter" @click="count++">
+    <button type="button" class="counter" @click="incrementCount()">
       Count is {{ count }}
     </button>
   </section>
 
   <section id="network">
-    <img :src="networkGif" class="network-gif" width="300" height="300" alt="" @click="count+=10" />
+    <img :src="networkGif" class="network-gif" width="300" height="300" alt="" @click="incrementCount(10);" />
   </section>
 
   
