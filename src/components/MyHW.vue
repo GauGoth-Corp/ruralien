@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 // LocalStorage
 import { useLocalStorage } from '@vueuse/core'
-// Camera
 import heroImg from '../assets/hero.svg'
 import galaxarisLogo from '../assets/logo-galaxaris-square.png'
 import networkGif from '../assets/network-connection.gif'
@@ -21,11 +20,11 @@ function incrementCount(n=1) {
 <template>
   <section id="center">
     <div class="hero">
-      <img :src="heroImg" class="base" width="170" height="179" alt="" />
+      <img :src="heroImg" class="base" width="170" height="170" alt="" />
     </div>
     <div>
       <h1>RuraLien</h1>
-      <p>Welcome to the RuraLien app <span class="beta">- v0.1-Beta</span></p>
+      <p>Welcome to the RuraLien app <span class="version-info">- v0.1.0-Beta</span></p>
     </div>
     <button type="button" class="counter" @click="incrementCount()">
       Count is {{ count }}
@@ -42,7 +41,7 @@ function incrementCount(n=1) {
       <img :src="galaxarisLogo" class="logo" alt="Galaxaris logo" />
       <div>Galaxaris</div>
     </a>
-    <div class="copyright">Copyright © 2024 Galaxaris - All rights reserved.</div>
+    <div class="copyright">Copyright © 2025-2026 Galaxaris - All rights reserved.</div>
   </section>
 
   
@@ -60,9 +59,9 @@ function incrementCount(n=1) {
     cursor: pointer;
   }
 
-  .beta {
+  .version-info {
     font-size: 0.8rem;
-    color: #c9c9c9;
+    color: var(--text);
     font-style: italic;
   }
 
@@ -81,7 +80,7 @@ function incrementCount(n=1) {
   .footer .copyright {
     text-align: center;
     font-size: 0.8rem;
-    color: #c9c9c9;
+    color: var(--text);
     font-style: italic;
   }
 
@@ -99,7 +98,7 @@ function incrementCount(n=1) {
   .logo-link div, .logo-link div:link, .logo-link div:visited {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--text-h);
     text-decoration: none;
   }
 </style>

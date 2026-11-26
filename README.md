@@ -2,7 +2,7 @@
 
 [Readme](README.md) | [Setup](SETUP.md) | [License](LICENSE.md)
 
-# Application RuraLien - v0.1-Beta
+# Application RuraLien - v0.1.0-Beta
 
 Application de communication hors-réseau pour les zones rurales, développé par **Galaxaris**.
 Couplé au Module RuraLien, utilisant un boîtier LoRa (ESP32), il permet de créer un réseau local maillé pour communiquer sans dépendre d'Internet (zones blanches, montagne, festivals, camps scouts, situations d'urgence).
